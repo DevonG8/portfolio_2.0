@@ -6,33 +6,44 @@ export default function NavBar() {
             <Tabs
                 variant="primary"
                 defaultSelectedKey="home"
-                className="w-full max-w-md">
+                className="w-full max-w-md ">
                 <Tabs.ListContainer>
                     <Tabs.List aria-label="Navigation Options">
-                        {/* Removed 'title' prop—text goes directly inside the tags */}
-                        <Tabs.Tab id="home">
+                        {/* Dark mode color */}
+                        <Tabs.Tab
+                            id="home"
+                            className="data-[selected=true]:text-green-950">
                             Home
-                            <Tabs.Indicator />
+                            <Tabs.Indicator className="bg-emerald-600" />
                         </Tabs.Tab>
 
-                        <Tabs.Tab id="about">
+                        <Tabs.Tab
+                            id="about"
+                            className="data-[selected=true]:text-green-950">
                             About
-                            <Tabs.Indicator />
+                            <Tabs.Indicator className="bg-emerald-500" />
                         </Tabs.Tab>
 
-                        <Tabs.Tab id="experience">
+                        <Tabs.Tab
+                            id="experience"
+                            className="data-[selected=true]:text-green-950">
                             Experience
-                            <Tabs.Indicator />
+                            <Tabs.Indicator className="bg-emerald-400" />
                         </Tabs.Tab>
 
-                        <Tabs.Tab id="projects">
+                        <Tabs.Tab
+                            id="projects"
+                            className="data-[selected=true]:text-green-950">
                             Projects
-                            <Tabs.Indicator />
+                            <Tabs.Indicator className="bg-emerald-300" />
                         </Tabs.Tab>
 
-                        <Tabs.Tab id="contact">
+                        {/* Light mode color */}
+                        <Tabs.Tab
+                            id="contact"
+                            className="data-[selected=true]:text-green-950">
                             Contact
-                            <Tabs.Indicator />
+                            <Tabs.Indicator className="bg-green-300" />
                         </Tabs.Tab>
                     </Tabs.List>
                 </Tabs.ListContainer>
