@@ -3,7 +3,7 @@ import heroImage from "../assets/IMG_6626.jpeg";
 
 export default function AboutMe() {
     return (
-        <Card className="max-w-4xl mx-auto flex-col md:flex-row items-stretch overflow-hidden border border-border shadow-sm">
+        <Card className="w-1/2 flex flex-col md:flex-row items-stretch overflow-hidden border border-border shadow-sm min-h-97.5">
             {/* Image Section */}
             <div className="relative w-full md:w-48 lg:w-64 shrink-0 overflow-hidden aspect-square md:aspect-auto">
                 <img
@@ -31,10 +31,9 @@ export default function AboutMe() {
                     </Card.Description>
                 </Card.Header>
                 <Card.Footer className="mt-auto p-0 pt-6">
-                    <Button 
-                        variant="primary" 
-                        className="font-bold px-8 shadow-sm"
-                    >
+                    <Button
+                        variant="primary"
+                        className="font-bold px-8 shadow-sm">
                         Learn More
                     </Button>
                 </Card.Footer>
