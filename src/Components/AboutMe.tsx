@@ -1,5 +1,4 @@
 import { Button, Card } from "@heroui/react";
-import heroImage from "../assets/IMG_6626.jpeg";
 
 export default function AboutMe() {
     return (
@@ -10,7 +9,7 @@ export default function AboutMe() {
                     alt="Profile"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                     loading="lazy"
-                    src={heroImage}
+                    src="MyPic.jpeg"
                 />
             </div>
 
