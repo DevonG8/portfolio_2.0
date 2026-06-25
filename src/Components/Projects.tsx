@@ -76,7 +76,6 @@ export default function Projects() {
                         <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                             <Button
                                 size="sm"
-                                // onPress={() => handleLink("")}
                                 isDisabled>
                                 Live Site
                             </Button>

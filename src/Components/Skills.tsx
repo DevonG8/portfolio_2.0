@@ -7,7 +7,7 @@ export default function Skills() {
             <Card className="md:basis-1/3 aspect-square p-6 flex flex-col justify-center border border-border shadow-sm shrink-0">
                 <div className="space-y-4">
                     <Typography
-                        type="h4"
+                        type="h2"
                         className="font-bold text-center border-b border-border pb-2">
                         Tools
                     </Typography>
@@ -58,7 +58,7 @@ export default function Skills() {
                     <div>
                         <Typography
                             type="h2"
-                            className="text-3xl font-black tracking-tight mb-4 text-emerald-500">
+                            className="text-3xl font-black tracking-tight mb-4 text-emerald-500 text-center">
                             Skills & Expertise
                         </Typography>
                         <Typography

@@ -7,24 +7,33 @@ import ContactCard from "./Components/ContactCard";
 
 export default function App() {
     return (
-        <div
-            className={`min-h-dvh transition-colors duration-300 antialiased  text-foreground"}`}>
-            <div>
+        <div className="min-h-dvh transition-colors duration-300 antialiased text-foreground bg-grid">
+            <div id="home" className="sticky top-0 z-50 w-full backdrop-blur-md bg-black/40 border-b border-border/20">
                 <NavBar />
             </div>
-            <div className="flex w-full h-150 flex-col items-center justify-center gap-4 p-10">
+            <div
+                id="about"
+                className="flex w-full h-150 flex-col items-center justify-center gap-4 p-10 scroll-mt-20">
                 <AboutMe />
             </div>
-            <div className="flex w-full h-150 flex-col items-center justify-center gap-4 p-10">
+            <div
+                id="experience"
+                className="flex w-full h-150 flex-col items-center justify-center gap-4 p-10 scroll-mt-20">
                 <Experience />
             </div>
-            <div className="flex w-full flex-col items-center justify-center gap-4 p-10">
+            <div
+                id="projects"
+                className="flex w-full flex-col items-center justify-center gap-4 p-10 scroll-mt-20">
                 <Projects />
             </div>
-            <div className="flex w-full flex-col items-center justify-center gap-4 p-10">
+            <div
+                id="skills"
+                className="flex w-full flex-col items-center justify-center gap-4 p-10 scroll-mt-20">
                 <Skills />
             </div>
-            <div className="flex w-full flex-col items-center justify-center gap-4 p-10">
+            <div
+                id="contact"
+                className="flex w-full flex-col items-center justify-center gap-4 p-10 scroll-mt-20">
                 <ContactCard />
             </div>
         </div>
