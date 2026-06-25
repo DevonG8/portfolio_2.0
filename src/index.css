@@ -6,107 +6,209 @@
 /* Correct source scanner for @heroui/react */
 @source "../node_modules/@heroui/react/dist/**/*.{js,ts,jsx,tsx}";
 
+/* ─── Tailwind theme tokens ─────────────────────────────────────────────── */
 @theme {
-    /* Theme Colors (Light Mode) */
-    --color-accent: oklch(82% 0.12 155);
-    --color-accent-foreground: oklch(15% 0.024 155);
-    --color-background: oklch(97.02% 0.0015 155);
-    --color-border: oklch(90% 0.0015 155);
-    --color-danger: oklch(65.32% 0.2335 13.88);
-    --color-danger-foreground: oklch(99.11% 0 0);
-    --color-default: oklch(94% 0.0015 155);
-    --color-default-foreground: oklch(21.03% 0.0059 155);
-    --color-field-background: oklch(100% 0.0008 155);
+    /* Light Mode — Dusty pink accents, warm cream backgrounds */
+    --color-accent: oklch(58% 0.18 0);
+    --color-accent-foreground: oklch(98% 0.005 0);
+    --color-background: oklch(96% 0.012 60);
+    --color-border: oklch(88% 0.018 30);
+    --color-danger: oklch(60% 0.22 15);
+    --color-danger-foreground: oklch(99% 0 0);
+    --color-default: oklch(91% 0.016 50);
+    --color-default-foreground: oklch(22% 0.01 0);
+    --color-field-background: oklch(98% 0.008 60);
     --color-field-border: transparent;
-    --color-field-foreground: oklch(21.03% 0.0015 155);
-    --color-field-placeholder: oklch(55.17% 0.003 155);
-    --color-focus: oklch(82% 0.12 155);
-    --color-foreground: oklch(21.03% 0.0015 155);
-    --color-muted: oklch(55.17% 0.003 155);
-    --color-overlay: oklch(100% 0.0004 155);
-    --color-overlay-foreground: oklch(21.03% 0.0015 155);
-    --color-scrollbar: oklch(87.1% 0.0015 155);
-    --color-segment: oklch(100% 0.0015 155);
-    --color-segment-foreground: oklch(21.03% 0.0015 155);
-    --color-separator: oklch(92% 0.0015 155);
-    --color-success: oklch(73.29% 0.1941 138.95);
-    --color-success-foreground: oklch(21.03% 0.0059 138.95);
-    --color-surface: oklch(95% 0.002 155);
-    --color-surface-foreground: oklch(21.03% 0.0015 155);
-    --color-surface-secondary: oklch(95.24% 0.0012 155);
-    --color-surface-secondary-foreground: oklch(21.03% 0.0015 155);
-    --color-surface-tertiary: oklch(93.73% 0.0012 155);
-    --color-surface-tertiary-foreground: oklch(21.03% 0.0015 155);
-    --color-warning: oklch(78.19% 0.159 60.47);
-    --color-warning-foreground: oklch(21.03% 0.0059 60.47);
+    --color-field-foreground: oklch(22% 0.01 0);
+    --color-field-placeholder: oklch(56% 0.01 0);
+    --color-focus: oklch(58% 0.18 0);
+    --color-foreground: oklch(22% 0.01 0);
+    --color-muted: oklch(56% 0.01 10);
+    --color-overlay: oklch(99% 0.006 60);
+    --color-overlay-foreground: oklch(22% 0.01 0);
+    --color-scrollbar: oklch(84% 0.018 30);
+    --color-segment: oklch(98% 0.008 60);
+    --color-segment-foreground: oklch(22% 0.01 0);
+    --color-separator: oklch(86% 0.016 40);
+    --color-success: oklch(65% 0.18 145);
+    --color-success-foreground: oklch(22% 0.006 145);
+    --color-surface: oklch(93% 0.014 55);
+    --color-surface-foreground: oklch(22% 0.01 0);
+    --color-surface-secondary: oklch(94% 0.012 55);
+    --color-surface-secondary-foreground: oklch(22% 0.01 0);
+    --color-surface-tertiary: oklch(91% 0.012 50);
+    --color-surface-tertiary-foreground: oklch(22% 0.01 0);
+    --color-warning: oklch(78% 0.16 65);
+    --color-warning-foreground: oklch(22% 0.006 65);
 
-    /* Border Radius */
     --radius: 0.5rem;
     --field-radius: 0.75rem;
-
-    /* Font Family */
     --font-sans: var(--font-dm-sans);
 }
 
 @theme dark {
-    --color-background: oklch(12% 0.0015 155);
-    --color-border: oklch(28% 0.0015 155);
-    --color-danger: oklch(59.4% 0.1973 12.77);
-    --color-danger-foreground: oklch(99.11% 0 0);
-    --color-default: oklch(27.4% 0.0015 155);
-    --color-default-foreground: oklch(99.11% 0 0);
-    --color-field-background: oklch(21.03% 0.003 155);
+    /* Dark Mode — Fuchsia accents, dark gray backgrounds */
+    --color-accent: oklch(72% 0.28 328);
+    --color-accent-foreground: oklch(10% 0.02 328);
+    --color-background: oklch(14% 0.005 0);
+    --color-border: oklch(30% 0.008 0);
+    --color-danger: oklch(60% 0.22 15);
+    --color-danger-foreground: oklch(99% 0 0);
+    --color-default: oklch(22% 0.006 0);
+    --color-default-foreground: oklch(96% 0.004 0);
+    --color-field-background: oklch(20% 0.006 0);
     --color-field-border: transparent;
-    --color-field-foreground: oklch(99.11% 0.0015 155);
-    --color-field-placeholder: oklch(70.5% 0.003 155);
-    --color-focus: oklch(82% 0.12 155);
-    --color-foreground: oklch(99.11% 0.0015 155);
-    --color-muted: oklch(70.5% 0.003 155);
-    --color-overlay: oklch(21.03% 0.003 155);
-    --color-overlay-foreground: oklch(99.11% 0.0015 155);
-    --color-scrollbar: oklch(70.5% 0.0015 155);
-    --color-segment: oklch(39.64% 0.0015 155);
-    --color-segment-foreground: oklch(99.11% 0.0015 155);
-    --color-separator: oklch(25% 0.0015 155);
-    --color-success: oklch(73.29% 0.1941 138.95);
-    --color-success-foreground: oklch(21.03% 0.0059 138.95);
-    --color-surface: oklch(21.03% 0.003 155);
-    --color-surface-foreground: oklch(99.11% 0.0015 155);
-    --color-surface-secondary: oklch(25.7% 0.0023 155);
-    --color-surface-secondary-foreground: oklch(99.11% 0.0015 155);
-    --color-surface-tertiary: oklch(27.21% 0.0023 155);
-    --color-surface-tertiary-foreground: oklch(99.11% 0.0015 155);
-    --color-warning: oklch(82.03% 0.1392 64.48);
-    --color-warning-foreground: oklch(21.03% 0.0059 64.48);
+    --color-field-foreground: oklch(96% 0.004 0);
+    --color-field-placeholder: oklch(62% 0.006 0);
+    --color-focus: oklch(72% 0.28 328);
+    --color-foreground: oklch(96% 0.004 0);
+    --color-muted: oklch(62% 0.006 0);
+    --color-overlay: oklch(20% 0.006 0);
+    --color-overlay-foreground: oklch(96% 0.004 0);
+    --color-scrollbar: oklch(42% 0.006 0);
+    --color-segment: oklch(32% 0.006 0);
+    --color-segment-foreground: oklch(96% 0.004 0);
+    --color-separator: oklch(26% 0.006 0);
+    --color-success: oklch(68% 0.19 145);
+    --color-success-foreground: oklch(22% 0.006 145);
+    --color-surface: oklch(20% 0.006 0);
+    --color-surface-foreground: oklch(96% 0.004 0);
+    --color-surface-secondary: oklch(23% 0.006 0);
+    --color-surface-secondary-foreground: oklch(96% 0.004 0);
+    --color-surface-tertiary: oklch(25% 0.006 0);
+    --color-surface-tertiary-foreground: oklch(96% 0.004 0);
+    --color-warning: oklch(82% 0.14 68);
+    --color-warning-foreground: oklch(22% 0.006 68);
 }
 
+/* ─── HeroUI tokens (bare --var names HeroUI reads directly) ────────────── */
+:root,
+.light,
+.default,
+[data-theme="light"],
+[data-theme="default"] {
+    --accent: oklch(58% 0.18 0);
+    --accent-foreground: oklch(98% 0.005 0);
+    --background: oklch(96% 0.012 60);
+    --border: oklch(88% 0.018 30);
+    --danger: oklch(60% 0.22 15);
+    --danger-foreground: oklch(99% 0 0);
+    --default: oklch(91% 0.016 50);
+    --default-foreground: oklch(22% 0.01 0);
+    --field-background: oklch(98% 0.008 60);
+    --field-border: transparent;
+    --field-foreground: oklch(22% 0.01 0);
+    --field-placeholder: oklch(56% 0.01 0);
+    --focus: oklch(58% 0.18 0);
+    --foreground: oklch(22% 0.01 0);
+    --muted: oklch(56% 0.01 10);
+    --overlay: oklch(99% 0.006 60);
+    --overlay-foreground: oklch(22% 0.01 0);
+    --scrollbar: oklch(84% 0.018 30);
+    --segment: oklch(98% 0.008 60);
+    --segment-foreground: oklch(22% 0.01 0);
+    --separator: oklch(86% 0.016 40);
+    --success: oklch(65% 0.18 145);
+    --success-foreground: oklch(22% 0.006 145);
+    --surface: oklch(93% 0.014 55);
+    --surface-foreground: oklch(22% 0.01 0);
+    --surface-secondary: oklch(94% 0.012 55);
+    --surface-secondary-foreground: oklch(22% 0.01 0);
+    --surface-tertiary: oklch(91% 0.012 50);
+    --surface-tertiary-foreground: oklch(22% 0.01 0);
+    --warning: oklch(78% 0.16 65);
+    --warning-foreground: oklch(22% 0.006 65);
+
+    --radius: 0.5rem;
+    --field-radius: 0.75rem;
+    --font-sans: var(--font-dm-sans);
+}
+
+.dark,
+[data-theme="dark"] {
+    color-scheme: dark;
+    --accent: oklch(72% 0.28 328);
+    --accent-foreground: oklch(10% 0.02 328);
+    --background: oklch(14% 0.005 0);
+    --border: oklch(30% 0.008 0);
+    --danger: oklch(60% 0.22 15);
+    --danger-foreground: oklch(99% 0 0);
+    --default: oklch(22% 0.006 0);
+    --default-foreground: oklch(96% 0.004 0);
+    --field-background: oklch(20% 0.006 0);
+    --field-border: transparent;
+    --field-foreground: oklch(96% 0.004 0);
+    --field-placeholder: oklch(62% 0.006 0);
+    --focus: oklch(72% 0.28 328);
+    --foreground: oklch(96% 0.004 0);
+    --muted: oklch(62% 0.006 0);
+    --overlay: oklch(20% 0.006 0);
+    --overlay-foreground: oklch(96% 0.004 0);
+    --scrollbar: oklch(42% 0.006 0);
+    --segment: oklch(32% 0.006 0);
+    --segment-foreground: oklch(96% 0.004 0);
+    --separator: oklch(26% 0.006 0);
+    --success: oklch(68% 0.19 145);
+    --success-foreground: oklch(22% 0.006 145);
+    --surface: oklch(20% 0.006 0);
+    --surface-foreground: oklch(96% 0.004 0);
+    --surface-secondary: oklch(23% 0.006 0);
+    --surface-secondary-foreground: oklch(96% 0.004 0);
+    --surface-tertiary: oklch(25% 0.006 0);
+    --surface-tertiary-foreground: oklch(96% 0.004 0);
+    --warning: oklch(82% 0.14 68);
+    --warning-foreground: oklch(22% 0.006 68);
+}
+
+/* ─── Base styles ───────────────────────────────────────────────────────── */
 html,
 body {
-    background-color: #ffffff;
+    background-color: oklch(96% 0.012 60);
     transition: background-color 0.3s ease;
 }
 
-.bg-grid {
-    background-color: #ffffff;
-    background-image: 
-        radial-gradient(circle at 50% 250px, rgba(16, 185, 129, 0.03) 0%, transparent 60%),
-        linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-    background-size: 100% 100%, 40px 40px, 40px 40px;
-    background-repeat: no-repeat, repeat, repeat;
-    transition: background-color 0.3s ease, background-image 0.3s ease;
-}
-
-/* Dark mode overrides */
 html.dark,
 .dark body {
-    background-color: #000000;
+    background-color: oklch(14% 0.005 0);
+}
+
+/* ─── Grid background ───────────────────────────────────────────────────── */
+.bg-grid {
+    background-color: oklch(96% 0.012 60);
+    background-image:
+        radial-gradient(
+            circle at 50% 250px,
+            rgba(200, 60, 120, 0.05) 0%,
+            transparent 60%
+        ),
+        linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+    background-size:
+        100% 100%,
+        40px 40px,
+        40px 40px;
+    background-repeat: no-repeat, repeat, repeat;
+    transition:
+        background-color 0.3s ease,
+        background-image 0.3s ease;
 }
 
 .dark .bg-grid {
-    background-color: #000000;
-    background-image: 
-        radial-gradient(circle at 50% 250px, rgba(16, 185, 129, 0.06) 0%, transparent 60%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-color: oklch(14% 0.005 0);
+    background-image:
+        radial-gradient(
+            circle at 50% 250px,
+            rgba(220, 50, 200, 0.08) 0%,
+            transparent 60%
+        ),
+        linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        );
 }

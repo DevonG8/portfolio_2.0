@@ -4,7 +4,6 @@ import { FiSun } from "react-icons/fi";
 import { IoMdMoon } from "react-icons/io";
 
 export default function NavBar() {
-    // false = dark mode (Moon on left), true = light mode (Sun on right)
     const [isLightMode, setIsLightMode] = useState<boolean>(false);
 
     useEffect(() => {
@@ -38,7 +37,7 @@ export default function NavBar() {
                             id="home"
                             className="data-[selected=true]:text-green-950">
                             Home
-                            <Tabs.Indicator className="bg-emerald-600" />
+                            <Tabs.Indicator className="bg-accent" />
                         </Tabs.Tab>
 
                         <Tabs.Tab
