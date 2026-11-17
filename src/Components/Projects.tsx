@@ -1,93 +1,260 @@
+import { useState } from "react";
 import { Card, Typography, Button } from "@heroui/react";
+import { useNavigate } from "react-router-dom";
+
+type ProjectPreviewProps = {
+    title: string;
+    images: string[];
+    liveUrl?: string;
+    githubUrl: string;
+};
+
+function ProjectPreview({
+    title,
+    images,
+    liveUrl,
+    githubUrl,
+}: ProjectPreviewProps) {
+    const [currentImage, setCurrentImage] = useState(0);
+
+    const changeImage = (direction: number) => {
+        setCurrentImage(
+            (current) => (current + direction + images.length) % images.length,
+        );
+    };
+
+    const openLink = (url: string) => {
+        window.open(url, "_blank", "noopener,noreferrer");
+    };
+
+    return (
+        <div
+            tabIndex={0}
+            role="region"
+            aria-label={`${title} screenshots`}
+            className="
+                group relative isolate w-full min-w-0
+                rounded-2xl outline-none
+                focus-visible:ring-2 focus-visible:ring-fuchsia-500
+            "
+            onKeyDown={(event) => {
+                if (event.target !== event.currentTarget) return;
+
+                if (event.key === "ArrowLeft") {
+                    event.preventDefault();
+                    changeImage(-1);
+                }
+
+                if (event.key === "ArrowRight") {
+                    event.preventDefault();
+                    changeImage(1);
+                }
+            }}>
+            {/*
+                add decorative designs
+            */}
+
+            <div
+                className="
+                    relative w-full origin-center
+                    transition-transform duration-500 ease-out
+                    lg:scale-[0.64]
+                    lg:group-hover:scale-100
+                    lg:group-focus-within:scale-100
+                    motion-reduce:transition-none
+                ">
+                <div
+                    className="
+                        relative overflow-hidden rounded-xl
+                        border border-white/15 bg-black/30 shadow-xl
+                    ">
+                    <div className="aspect-16/10">
+                        <img
+                            src={images[currentImage]}
+                            alt={`${title} screenshot ${currentImage + 1}`}
+                            className="h-full w-full object-contain"
+                            loading="lazy"
+                        />
+                    </div>
+
+                    {images.length > 1 && (
+                        <div
+                            className="
+                                visible opacity-100
+                                transition-opacity duration-300
+                                lg:invisible lg:opacity-0
+                                lg:group-hover:visible
+                                lg:group-hover:opacity-100
+                                lg:group-focus-within:visible
+                                lg:group-focus-within:opacity-100
+                            ">
+                            <button
+                                type="button"
+                                aria-label={`Previous ${title} screenshot`}
+                                onClick={() => changeImage(-1)}
+                                className="
+                                    absolute left-3 top-1/2
+                                    flex h-10 w-10 -translate-y-1/2
+                                    items-center justify-center
+                                    rounded-full bg-black/75
+                                    text-2xl text-white
+                                    transition-colors hover:bg-fuchsia-600
+                                    focus-visible:outline-2
+                                    focus-visible:outline-fuchsia-400
+                                ">
+                                ‹
+                            </button>
+
+                            <button
+                                type="button"
+                                aria-label={`Next ${title} screenshot`}
+                                onClick={() => changeImage(1)}
+                                className="
+                                    absolute right-3 top-1/2
+                                    flex h-10 w-10 -translate-y-1/2
+                                    items-center justify-center
+                                    rounded-full bg-black/75
+                                    text-2xl text-white
+                                    transition-colors hover:bg-fuchsia-600
+                                    focus-visible:outline-2
+                                    focus-visible:outline-fuchsia-400
+                                ">
+                                ›
+                            </button>
+
+                            <div
+                                className="
+                                    absolute bottom-3 left-1/2
+                                    flex -translate-x-1/2 items-center gap-2
+                                    rounded-full bg-black/65 px-3 py-2
+                                ">
+                                {images.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        type="button"
+                                        aria-label={`Show screenshot ${index + 1}`}
+                                        aria-pressed={currentImage === index}
+                                        onClick={() => setCurrentImage(index)}
+                                        className={`
+                                            h-2.5 w-2.5 rounded-full
+                                            transition-colors
+                                            focus-visible:outline-2
+                                            focus-visible:outline-white
+                                            ${
+                                                currentImage === index
+                                                    ? "bg-fuchsia-500"
+                                                    : "bg-white/45 hover:bg-white"
+                                            }
+                                        `}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div
+                    className="
+                        visible mt-4 flex justify-center gap-3
+                        opacity-100 transition-opacity duration-300
+                        lg:invisible lg:opacity-0
+                        lg:group-hover:visible
+                        lg:group-hover:opacity-100
+                        lg:group-focus-within:visible
+                        lg:group-focus-within:opacity-100
+                    ">
+                    <Button
+                        size="sm"
+                        isDisabled={!liveUrl}
+                        onPress={() => {
+                            if (liveUrl) openLink(liveUrl);
+                        }}>
+                        Live Site
+                    </Button>
+
+                    <Button
+                        size="sm"
+                        variant="secondary"
+                        onPress={() => openLink(githubUrl)}>
+                        GitHub
+                    </Button>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 export default function Projects() {
-    const handleLink = (url: string) => {
-        if (url) {
-            window.open(url, "_blank", "noopener,noreferrer");
-        }
-    };
+    const navigate = useNavigate();
 
     return (
         <Card
             variant="transparent"
-            className="w-full max-w flex flex-col items-stretch overflow-hidden border border-border shadow-sm min-h-97.5">
-            <Card.Header className="p-4 mb-4 flex justify-center w-full">
+            className="
+                flex min-h-97.5 w-full flex-col items-stretch
+                overflow-hidden border border-border shadow-sm
+            ">
+            <Card.Header className="mb-4 flex w-full justify-center p-4">
                 <Typography
                     type="h1"
                     className="text-center">
                     Projects
                 </Typography>
             </Card.Header>
-            <Card.Content className="mt-auto p-0 pt-6 flex flex-col gap-10">
-                {/* WKD */}
+
+            <Card.Content className="flex flex-col gap-12 p-4 pt-6 lg:p-6">
+                {/* Denzy App */}
                 <Card
                     variant="transparent"
-                    className="flex flex-row gap-4 items-stretch w-full">
-                    {/* Left */}
-                    <div
-                        className="relative group w-200 h-90 shrink-0 overflow-visible rounded-lg perspective-[1000px]
-                    origin-left transition-all duration-700 ease-out scale-[0.92] group-hover:scale-100">
-                        <div
-                            className="w-full h-full origin-left transition-all duration-700 ease-out 
-                        transform-[rotateY(35deg)] group-hover:transform-[rotateY(0deg)]">
-                            <img
-                                src="Screenshot.png"
-                                alt="Project screenshot"
-                                className="w-full h-full object-cover rounded-lg shadow-xl"
-                            />
-                            <div
-                                className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
-                                <Button
-                                    size="sm"
-                                    onPress={() =>
-                                        handleLink("https://You-Kan-Do-It.com")
-                                    }>
-                                    Live Site
-                                </Button>
-                                <Button
-                                    size="sm"
-                                    variant="secondary"
-                                    onPress={() =>
-                                        handleLink(
-                                            "https://github.com/DevonG8/WeKanDoIt",
-                                        )
-                                    }>
-                                    GitHub
-                                </Button>
-                            </div>
-                        </div>
+                    className="
+                        flex w-full flex-col items-stretch gap-6
+                        lg:flex-row lg:items-center
+                    ">
+                    <div className="w-full min-w-0 lg:w-[44%] lg:shrink-0">
+                        <ProjectPreview
+                            title="Denzy App"
+                            images={[
+                                "/Denzy_img.png",
+                                "/Denzy_img2.png",
+                                "/Denzy_img3.png",
+                                "/Denzy_img4.png",
+                            ]}
+                            liveUrl="https://Denzy.app"
+                            githubUrl="https://github.com/DevonG8/DENZY_Web"
+                        />
                     </div>
 
-                    {/* Right: Project info */}
-                    <div className="flex flex-col justify-right pr-20">
+                    <div className="flex min-w-0 flex-1 flex-col px-4 lg:px-6">
                         <Card.Header>
                             <Card.Title>
                                 <Typography
                                     type="h3"
                                     className="text-center">
-                                    We Kan Do It
+                                    Denzy
                                 </Typography>
                             </Card.Title>
+
                             <Card.Description>
                                 <Typography
                                     type="h3"
                                     color="muted"
-                                    className="text-center mt-5">
-                                    React, TypeScript, Supabase WeKanDoIt is a
-                                    Kanban-style task and calendar app for
-                                    households and dorms, built with React,
-                                    TypeScript, and Supabase. I handled backend
-                                    and server integration as part of the
-                                    original team, then independently rebuilt
-                                    the frontend and migrated the app to
-                                    TypeScript after the course ended.
-                                    <br />
-                                    Live at you-kan-do-it.com.
+                                    className="mt-5 text-center">
+                                    Denzy is a companion website for an iOS
+                                    social discovery app that connects people
+                                    attending the same live event. Built with
+                                    React, TypeScript, and Tailwind CSS, the
+                                    site features responsive layouts, light and
+                                    dark themes, animated transitions, and
+                                    Supabase-powered account registration and
+                                    login. It showcases the app’s experience and
+                                    safety features while giving visitors access
+                                    to platform policies and community
+                                    guidelines.
                                 </Typography>
                             </Card.Description>
                         </Card.Header>
-                        <Card.Footer className="mt-auto p-4 flex justify-center w-full">
+
+                        <Card.Footer className="mt-auto flex w-full justify-center p-4">
                             <Button
                                 size="md"
                                 onPress={() =>
@@ -102,59 +269,103 @@ export default function Projects() {
                         </Card.Footer>
                     </div>
                 </Card>
-                {/* Owl Diary */}
+                {/* We Kan Do It */}
                 <Card
                     variant="transparent"
-                    className="flex flex-row gap-4 items-stretch">
-                    {/* Left: Image */}
-                    <div
-                        className="relative group w-200 h-90 shrink-0 overflow-visible rounded-lg perspective-[1000px]
-                    origin-left transition-all duration-700 ease-out scale-[0.92] group-hover:scale-100">
-                        <div
-                            className="w-full h-full origin-left transition-all duration-700 ease-out 
-                        transform-[rotateY(35deg)] group-hover:transform-[rotateY(0deg)]">
-                            <img
-                                src="OwlDiary.png"
-                                alt="Project screenshot"
-                                className="w-full h-full object-cover rounded-lg shadow-xl"
-                            />
-                            <div
-                                className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
-                                <Button
-                                    size="sm"
-                                    isDisabled>
-                                    Live Site
-                                </Button>
-                                <Button
-                                    size="sm"
-                                    variant="secondary"
-                                    onPress={() =>
-                                        handleLink(
-                                            "https://github.com/DevonG8/Owl_Diary",
-                                        )
-                                    }>
-                                    GitHub
-                                </Button>
-                            </div>
-                        </div>
+                    className="
+                        flex w-full flex-col items-stretch gap-6
+                        lg:flex-row lg:items-center
+                    ">
+                    <div className="w-full min-w-0 lg:w-[44%] lg:shrink-0">
+                        <ProjectPreview
+                            title="We Kan Do It"
+                            images={[
+                                "/WKD_img5.png",
+                                "/WKD_img2.png",
+                                "/WKD_im3.png",
+                                "/WKD_img4.png",
+                            ]}
+                            liveUrl="https://You-Kan-Do-It.com"
+                            githubUrl="https://github.com/DevonG8/WeKanDoIt"
+                        />
                     </div>
 
-                    {/* Right: Project info */}
-                    <div className="flex flex-col justify-right">
+                    <div className="flex min-w-0 flex-1 flex-col px-4 lg:px-6">
                         <Card.Header>
-                            <Typography
-                                type="h3"
-                                className="text-center">
-                                Owl Diary
-                            </Typography>
+                            <Card.Title>
+                                <Typography
+                                    type="h3"
+                                    className="text-center">
+                                    We Kan Do It
+                                </Typography>
+                            </Card.Title>
+
                             <Card.Description>
                                 <Typography
                                     type="h3"
                                     color="muted"
-                                    className="text-center mt-5">
+                                    className="mt-5 text-center">
+                                    WeKanDoIt is a Kanban-style task and
+                                    calendar app for households and dorms, built
+                                    with React, TypeScript, and Supabase. I
+                                    handled backend and server integration as
+                                    part of the original team, then
+                                    independently rebuilt the frontend and
+                                    migrated the app to TypeScript after the
+                                    course ended.
+                                    <br />
+                                    Live at you-kan-do-it.com.
+                                </Typography>
+                            </Card.Description>
+                        </Card.Header>
+
+                        <Card.Footer className="mt-auto flex w-full justify-center p-4">
+                            <Button
+                                size="md"
+                                onPress={() => navigate("/projects/wkd")}>
+                                Learn More
+                            </Button>
+                        </Card.Footer>
+                    </div>
+                </Card>
+
+                {/* Owl Diary */}
+                <Card
+                    variant="transparent"
+                    className="
+                        flex w-full flex-col items-stretch gap-6
+                        lg:flex-row lg:items-center
+                    ">
+                    <div className="w-full min-w-0 lg:w-[44%] lg:shrink-0">
+                        <ProjectPreview
+                            title="Owl Diary"
+                            images={[
+                                "/OwlDiary.png",
+                                "/Owl_Diary_IMG2.png",
+                                "/OwlDiary_img3.png",
+                                "/OwlDiary_img4.png",
+                            ]}
+                            githubUrl="https://github.com/DevonG8/Owl_Diary"
+                        />
+                    </div>
+
+                    <div className="flex min-w-0 flex-1 flex-col px-4 lg:px-6">
+                        <Card.Header>
+                            <Card.Title>
+                                <Typography
+                                    type="h3"
+                                    className="text-center">
+                                    Owl Diary
+                                </Typography>
+                            </Card.Title>
+
+                            <Card.Description>
+                                <Typography
+                                    type="h3"
+                                    color="muted"
+                                    className="mt-5 text-center">
                                     A private journaling platform built for a
-                                    Women's & Gender Studies course at SCSU,
+                                    Women's &amp; Gender Studies course at SCSU,
                                     replacing individual Wix sites with a
                                     unified space for students to write and
                                     reflect together. As backend lead, I handled
@@ -166,7 +377,8 @@ export default function Projects() {
                                 </Typography>
                             </Card.Description>
                         </Card.Header>
-                        <Card.Footer className="mt-auto p-4 flex justify-center w-full">
+
+                        <Card.Footer className="mt-auto flex w-full justify-center p-4">
                             <Button
                                 size="md"
                                 onPress={() =>

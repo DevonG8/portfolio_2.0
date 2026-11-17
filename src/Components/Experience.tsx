@@ -72,21 +72,22 @@ export default function Experience() {
                                     <ScrollShadow className="max-h-40">
                                         <Typography
                                             type="body"
-                                            className="text-emerald-500">
+                                            className="">
                                             Administered and maintained critical
-                                            enterprise resources (including Azure
-                                            services) supporting 5,000+ university
-                                            faculty/ staff, ensuring high
-                                            availability and system stability.
-                                            Enhanced system security through the
-                                            configuration of Active Directory (AD)
-                                            and the application of Role-Based Access
-                                            Control policies across multiple
-                                            enterprise environments. Acted as a
-                                            Tier-2 technical expert, resolving 80+
+                                            enterprise resources (including
+                                            Azure services) supporting 5,000+
+                                            university faculty/ staff, ensuring
+                                            high availability and system
+                                            stability. Enhanced system security
+                                            through the configuration of Active
+                                            Directory (AD) and the application
+                                            of Role-Based Access Control
+                                            policies across multiple enterprise
+                                            environments. Acted as a Tier-2
+                                            technical expert, resolving 80+
                                             weekly tickets involving advanced
-                                            diagnostics for network, hardware, and
-                                            core operating systems.
+                                            diagnostics for network, hardware,
+                                            and core operating systems.
                                         </Typography>
                                     </ScrollShadow>
                                 </div>
@@ -122,7 +123,8 @@ export default function Experience() {
                                         </Typography>
 
                                         <Typography type="body-sm">
-                                            Graduated 05/2021 | East Hartford, CT
+                                            Graduated 05/2021 | East Hartford,
+                                            CT
                                         </Typography>
                                     </div>
                                 </div>
@@ -142,7 +144,8 @@ export default function Experience() {
                                     </Avatar>
                                     <div className="flex flex-col items-center text-center gap-2">
                                         <Typography type="h4">
-                                            Southern Connecticut State University
+                                            Southern Connecticut State
+                                            University
                                         </Typography>
                                         <Typography type="h4">
                                             B.S Computer Science
